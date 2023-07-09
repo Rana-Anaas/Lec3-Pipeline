@@ -1,0 +1,24 @@
+parameters:
+- name: stgname
+  default: stage_parameter
+  type: string
+  # template: /variables/main-variable.yml
+
+- name: env
+  default: ''
+  type: string
+
+
+jobs:
+ - job: Job1
+   displayName: Job
+   continueOnError: true
+   workspace:
+    clean: outputs
+   steps:
+   - script: echo ${{ parameters.stgname }} 
+     displayName: parameter_1
+   - script: echo ${{ parameters.env }}
+     displayName: parameter_2
+        
+
